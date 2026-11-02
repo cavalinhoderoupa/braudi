@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Visão geral | Brownie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/apps.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main" style="
+      background-image: 
+        linear-gradient(rgba(20, 15, 12, 0.55), rgba(20, 15, 12, 0.55)),
+        url('img/background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    ">
+
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:13px">
+          <button class="mobile-menu" id="menuToggle" aria-label="Abrir menu">☰</button>
+
+          <div>
+            <div class="topbar-title">Brownie · Visão geral</div>
+            <div class="topbar-sub" id="todayLabel"></div>
+          </div>
+        </div>
+
+        <div class="topbar-right">Painel de gerenciamento</div>
+      </header>
+
+      <div class="content">
+
+        <div class="page-heading">
+          <div>
+            <h1>Visão geral</h1>
+            <p>Acompanhe o movimento das vendas e a situação do estoque.</p>
+          </div>
+        </div>
+
+        <section class="stats-grid" id="stats"></section>
+
+        <div class="dashboard-grid">
+
+          <section class="card card-pad">
+            <h2 class="card-title">Pedidos recentes</h2>
+            <div id="recentOrders" class="table-wrap"></div>
+          </section>
+
+          <section class="card card-pad">
+            <h2 class="card-title">Resumo do estoque</h2>
+            <div id="stockSummary"></div>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="vendas.html">
+                ＋ Registrar nova venda
+              </a>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>

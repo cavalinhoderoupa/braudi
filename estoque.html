@@ -1,0 +1,99 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gerenciar estoque | Brownie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/apps.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/estoque.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main" style="
+      background-image:
+        linear-gradient(rgba(20, 15, 12, 0.55), rgba(20, 15, 12, 0.55)),
+        url('img/background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    ">
+
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:13px">
+          <button class="mobile-menu" id="menuToggle" aria-label="Abrir menu">☰</button>
+
+          <div>
+            <div class="topbar-title">Brownie · Gerenciar estoque</div>
+            <div class="topbar-sub" id="todayLabel"></div>
+          </div>
+        </div>
+
+        <div class="topbar-right">Painel de gerenciamento</div>
+      </header>
+
+      <div class="content">
+
+        <div class="page-heading">
+          <div>
+            <h1>Gerenciar estoque</h1>
+            <p>Controle as quantidades disponíveis de cada brownie.</p>
+          </div>
+        </div>
+
+        <section class="card card-pad">
+          <h2 class="card-title">Estoque atual</h2>
+          <div class="table-wrap" id="stockTable"></div>
+        </section>
+
+        <section class="card card-pad mt-16">
+          <h2 class="card-title">Movimentar estoque</h2>
+
+          <form id="stockForm" class="inline-form">
+
+            <div class="field">
+              <label for="stockProduct">Produto</label>
+              <select id="stockProduct"></select>
+            </div>
+
+            <div class="field">
+              <label for="stockMode">Operação</label>
+              <select id="stockMode">
+                <option value="add">Adicionar</option>
+                <option value="remove">Retirar</option>
+                <option value="set">Corrigir para</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="stockQty">Quantidade</label>
+              <input id="stockQty" type="number" min="0" step="1" required>
+            </div>
+
+            <button class="btn btn-primary" type="submit">
+              Salvar movimentação
+            </button>
+
+          </form>
+
+          <p class="help">
+            Vendas e cancelamentos movimentam o estoque automaticamente.
+          </p>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>

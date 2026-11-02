@@ -1,0 +1,99 @@
+
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Registrar pagamento | Brownie</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <script src="js/apps.js" defer></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/pagamentos.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main" style="
+      background-image:
+        linear-gradient(rgba(20, 15, 12, 0.55), rgba(20, 15, 12, 0.55)),
+        url('img/background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    ">
+
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:13px">
+          <button class="mobile-menu" id="menuToggle" aria-label="Abrir menu">☰</button>
+          <div>
+            <div class="topbar-title">Brownie · Registrar pagamento</div>
+            <div class="topbar-sub" id="todayLabel"></div>
+          </div>
+        </div>
+        <div class="topbar-right">Painel de gerenciamento</div>
+      </header>
+
+      <div class="content">
+        <div class="page-heading">
+          <div>
+            <h1>Registrar pagamento</h1>
+            <p>Lance pagamentos parciais ou integrais em pedidos pendentes.</p>
+          </div>
+        </div>
+
+        <section class="card card-pad">
+          <h2 class="card-title">Novo pagamento</h2>
+
+          <form id="paymentForm" class="form-grid">
+            <div class="field">
+              <label for="paymentOrder">Pedido pendente</label>
+              <select id="paymentOrder" required></select>
+            </div>
+
+            <div class="field">
+              <label for="paymentAmount">Valor recebido (R$)</label>
+              <input id="paymentAmount" type="number" min="0.01" step="0.01" required>
+            </div>
+
+            <div class="field">
+              <label>Valor total</label>
+              <input id="paymentTotal" disabled value="—">
+            </div>
+
+            <div class="field">
+              <label>Já pago</label>
+              <input id="paymentPaid" disabled value="—">
+            </div>
+
+            <div class="field">
+              <label>Saldo restante</label>
+              <input id="paymentRemaining" disabled value="—">
+            </div>
+
+            <div class="field">
+              <label>Após este pagamento</label>
+              <input id="paymentAfter" disabled value="—">
+            </div>
+
+            <div class="actions" style="grid-column:1/-1">
+              <button class="btn btn-primary" type="submit">Registrar pagamento</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="card card-pad mt-16">
+          <h2 class="card-title">Pedidos com saldo pendente</h2>
+          <div class="table-wrap" id="pendingPayments"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+document.addEventListener("DOMContentLoaded",()=>{
+ const B=window.Brownie,rows=B.state.orders.filter(o=>!o.cancelled&&B.remaining(o)>0),sum=rows.reduce((n,o)=>n+B.remaining(o),0);
+ document.getElementById("debtStats").innerHTML=`<article class="card stat-card"><div class="stat-label">Total a receber</div><div class="stat-value">${B.money(sum)}</div><div class="stat-note">Somente pedidos ativos</div></article><article class="card stat-card"><div class="stat-label">Pedidos pendentes</div><div class="stat-value">${rows.length}</div><div class="stat-note">Com saldo em aberto</div></article>`;
+ document.getElementById("debtsTable").innerHTML=rows.length?`<table><thead><tr><th>Cliente</th><th>Pedido</th><th>Total</th><th>Pago</th><th>Restante</th><th>Pagamento</th></tr></thead><tbody>${rows.map(o=>`<tr><td>${B.escapeHtml(o.customer)}</td><td>#${o.id}</td><td>${B.money(B.total(o))}</td><td>${B.money(B.paid(o))}</td><td><strong>${B.money(B.remaining(o))}</strong></td><td><a class="btn btn-secondary btn-small" href="pagamentos.html">Registrar</a></td></tr>`).join("")}</tbody></table>`:'<div class="empty">Nenhuma dívida em aberto. Bom trabalho!</div>';
+});
